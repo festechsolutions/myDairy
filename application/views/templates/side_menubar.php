@@ -126,8 +126,6 @@
             </li>
           <?php endif; ?>
 
-<<<<<<< HEAD
-=======
           <?php if(in_array('viewPayments', $user_permission)): ?>
             <li class="treeview" id="PaymentsMainNav">
               <a href="#">
@@ -167,7 +165,6 @@
               </ul>
             </li>
           <?php endif; ?>
->>>>>>> dev
 
           <?php if(in_array('updateCompany', $user_permission)): ?>
             <li id="companyMainNav"><a href="<?php echo base_url('company/') ?>"><i class="fa fa-files-o"></i> <span>Company Info</span></a></li>
