@@ -50,11 +50,18 @@ class Cron extends Admin_Controller
 
 	function pdf()
 	{
-	    $this->load->helper('pdf_helper');
-	    
-	    echo "Printing Data in PDF";
-	    $data = "Printing Data in PDF";
-	    $this->load->view('pdfreport', $data);
+	    $this->load->library('Pdf');
+	    $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+	    $pdf->SetTitle('Pdf Example');
+	    $pdf->SetHeaderMargin(30);
+	    $pdf->SetTopMargin(20);
+	    $pdf->setFooterMargin(20);
+	    $pdf->SetAutoPageBreak(true);
+	    $pdf->SetAuthor('Author');
+	    $pdf->SetDisplayMode('real', 'default');
+	    $pdf->Write(5, 'CodeIgniter TCPDF Integration');
+	    $pdf->Output('pdfexample.pdf', 'I');
+	    $this->load->view('pdfreport');
 	}
 
 }
