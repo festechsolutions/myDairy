@@ -115,7 +115,7 @@
 
     $(document).ready(function() {
       $("#ReportMainNav").addClass('active');
-      $("#productReportSubMenu").addClass('active');
+      $("#revenueSubMenu").addClass('active');
     }); 
 
     var report_data = <?php echo '[' . implode(',', $results) . ']'; ?>;

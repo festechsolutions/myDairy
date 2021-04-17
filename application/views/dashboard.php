@@ -25,7 +25,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><?php echo $todays_itemdata; ?></h3>
+                <h3><?php if($todays_itemdata == ''){ echo '0';}else{ echo $todays_itemdata; }?></h3>
 
                 <p>Today's Delivered Items</p>
               </div>

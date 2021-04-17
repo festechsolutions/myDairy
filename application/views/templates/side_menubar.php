@@ -157,7 +157,7 @@
               </a>
               <ul class="treeview-menu">
                 <?php if(in_array('viewReport', $user_permission)): ?>
-                  <li id="productReportSubMenu"><a href="<?php echo base_url('reports') ?>"><i class="fa fa-circle-o"></i>Total Revenue</a></li>
+                  <li id="revenueSubMenu"><a href="<?php echo base_url('reports') ?>"><i class="fa fa-circle-o"></i>Total Revenue</a></li>
                 <?php endif; ?>
                 <?php if(in_array('viewReport', $user_permission)): ?>
                   <li id="productReportSubMenu"><a href="<?php echo base_url('reports/todayitemwise') ?>"><i class="fa fa-circle-o"></i>Today's Delivered Items</a></li>
