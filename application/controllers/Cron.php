@@ -17,7 +17,8 @@ class Cron extends Admin_Controller
 		$this->load->model('model_category');
         $this->load->model('model_orders');
 		$this->load->model('model_stores');
-        $this->load->model('model_subscribe');
+        $this->load->model('model_company');
+        $this->load->helper('pdf_helper');
 	}
 
 	public function index()
@@ -28,6 +29,12 @@ class Cron extends Admin_Controller
       		return;
   		}*/
 
+  		date_default_timezone_set("Asia/Kolkata");
+		$year = date('Y');
+		$month = date('m', strtotime ('-1 month'));
+		if (!is_dir('uploads/invoice/'.$year.'/'.$month)) {
+			mkdir('./uploads/invoice/' . $year.'/'.$month, 0777, TRUE);
+		}
   		$store_data = $this->model_stores->getStoresData();
   		//echo json_encode($store_data);
   		foreach ($store_data as $key => $value) {
@@ -36,32 +43,31 @@ class Cron extends Admin_Controller
   			$users_data = $this->model_users->getSubscribedUsersData($value['id']);
   			//echo json_encode($users_data);
   			foreach ($users_data as $k => $v) {
-
-  				$month = date('m');
+  				$month = date('m')-1;
   				$year = date('Y');
   				$orders_data = $this->model_orders->getUserDeliveriesData($value['id'],$v['id'],$month,$year);
   				echo "Printing ".$v['firstname']." data.";
   				echo json_encode($orders_data);
+  				$amount = 0;
+  				foreach ($orders_data as $a => $b) {
+  					$amount += $b['amount'];
+  				}
+  				echo "Total Amount is = ".$amount;
   				echo "<br>";
-
   			}
   		}
 	}
 
 	function pdf()
 	{
-	    $this->load->library('Pdf');
-	    $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-	    $pdf->SetTitle('Pdf Example');
-	    $pdf->SetHeaderMargin(30);
-	    $pdf->SetTopMargin(20);
-	    $pdf->setFooterMargin(20);
-	    $pdf->SetAutoPageBreak(true);
-	    $pdf->SetAuthor('Author');
-	    $pdf->SetDisplayMode('real', 'default');
-	    $pdf->Write(5, 'CodeIgniter TCPDF Integration');
-	    $pdf->Output('pdfexample.pdf', 'I');
-	    $this->load->view('pdfreport');
+	    $this->load->helper('pdf_helper');
+	    $data = "Print Data";
+    	$this->load->view('pdfreport', $data);
+    	/*
+    	$data = "Print Data";
+	    $this->$data['orders_data'] = $orders_data;
+  		$this->render_template('pdfreport', $this->$data);
+    	*/
 	}
 
 }

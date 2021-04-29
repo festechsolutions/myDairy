@@ -30,7 +30,7 @@
                 <p>Today's Delivered Items</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-bag"></i>
               </div>
               <a href="<?php echo base_url('reports/todayitemwise') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -44,7 +44,7 @@
                 <p>Total Subscribed Customers</p> 
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-flash"></i>
               </div>
               <a href="<?php echo base_url('subscribe/index') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -59,7 +59,7 @@
                 <p>Total Customers</p>
               </div>
               <div class="icon">
-                <i class="ion ion-wifi"></i>
+                <i class="ion ion-person"></i>
               </div>
               <a href="<?php echo base_url('users/index') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -95,7 +95,7 @@
                 <p>Today's Delivered Items</p>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="ion ion-bag"></i>
               </div>
               <a href="<?php echo base_url('reports/todayitemwise') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -109,7 +109,7 @@
                 <p>Total Subscribed Customers</p> 
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-flash"></i>
               </div>
               <a href="<?php echo base_url('subscribe/index') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -124,7 +124,7 @@
                 <p>Total Customers</p>
               </div>
               <div class="icon">
-                <i class="ion ion-wifi"></i>
+                <i class="ion ion-person"></i>
               </div>
               <a href="<?php echo base_url('users/index') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
