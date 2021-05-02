@@ -138,13 +138,17 @@ CREATE TABLE `order_items` (
 CREATE TABLE `payments` (
   `id` int(11) NOT NULL,
   `invoice_no` int(11) NOT NULL,
-  `date` varchar(255) NOT NULL,
+  `invoice_date` varchar(255) NOT NULL,
+  `year` varchar(255) NOT NULL,
+  `month` varchar(255) NOT NULL,
+  `gross_amount` varchar(255) NOT NULL,
+  `service_charge_value` varchar(255) NOT NULL,
   `net_amount` varchar(255) NOT NULL,
   `payment_date` varchar(255) NOT NULL,
   `payment_mode` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
-  `status` int(11) NOT NULL
+  `payment_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

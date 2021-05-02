@@ -136,9 +136,6 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <?php if(in_array('createPayments', $user_permission)): ?>
-                  <li id="createPaymentsSubMenu"><a href="<?php echo base_url('payments/main') ?>"><i class="fa fa-circle-o"></i> New Payment</a></li>
-                <?php endif; ?>
                 <?php if(in_array('viewPayments', $user_permission)): ?>
                   <li id="managepaymentsSubMenu"><a href="<?php echo base_url('payments') ?>"><i class="fa fa-circle-o"></i>Manage Payments</a></li>
                 <?php endif; ?>
@@ -160,7 +157,13 @@
                   <li id="revenueSubMenu"><a href="<?php echo base_url('reports') ?>"><i class="fa fa-circle-o"></i>Total Revenue</a></li>
                 <?php endif; ?>
                 <?php if(in_array('viewReport', $user_permission)): ?>
+                  <li id="storeReportSubMenu"><a href="<?php echo base_url('reports/storewise') ?>"><i class="fa fa-circle-o"></i>Storewise Revenue</a></li>
+                <?php endif; ?>
+                <?php if(in_array('viewReport', $user_permission)): ?>
                   <li id="productReportSubMenu"><a href="<?php echo base_url('reports/todayitemwise') ?>"><i class="fa fa-circle-o"></i>Today's Delivered Items</a></li>
+                <?php endif; ?>
+                <?php if(in_array('viewReport', $user_permission)): ?>
+                  <li id="deliveryReportSubMenu"><a href="<?php echo base_url('reports/userdeliveries') ?>"><i class="fa fa-circle-o"></i>User Delivery Data</a></li>
                 <?php endif; ?>
               </ul>
             </li>

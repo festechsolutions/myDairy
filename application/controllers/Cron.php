@@ -18,43 +18,62 @@ class Cron extends Admin_Controller
         $this->load->model('model_orders');
 		$this->load->model('model_stores');
         $this->load->model('model_company');
-        $this->load->helper('pdf_helper');
+        $this->load->model('model_cron');
 	}
 
 	public function index()
 	{
-        /*if(!$this->input->is_cli_request())
+        if(!$this->input->is_cli_request())
   		{
       		echo "This script can only be accessed via the command line" . PHP_EOL;
       		return;
-  		}*/
+  		}else
+  		{
+	  		$store_data = $this->model_stores->getStoresData();
+	  		$company_data = $this->model_company->getCompanyData(1);
+	  		//echo json_encode($store_data);
 
-  		date_default_timezone_set("Asia/Kolkata");
-		$year = date('Y');
-		$month = date('m', strtotime ('-1 month'));
-		if (!is_dir('uploads/invoice/'.$year.'/'.$month)) {
-			mkdir('./uploads/invoice/' . $year.'/'.$month, 0777, TRUE);
-		}
-  		$store_data = $this->model_stores->getStoresData();
-  		$company_data = $this->model_company->getCompanyData(1);
-  		//echo json_encode($store_data);
-  		foreach ($store_data as $key => $value) {
-  			echo "Printing ".$value['name']." data.";
-  			echo "<br>";
-  			$users_data = $this->model_users->getSubscribedUsersData($value['id']);
-  			//echo json_encode($users_data);
-  			foreach ($users_data as $k => $v) {
-  				$month = date('m')-1;
-  				$year = date('Y');
-  				$orders_data = $this->model_orders->getUserDeliveriesData($value['id'],$v['id'],$month,$year);
-  				echo "Printing ".$v['firstname']." data.";
-  				//echo json_encode($orders_data);
-  				$amount = 0;
-  				foreach ($orders_data as $a => $b) {
-  					$amount += $b['amount'];
-  				}
-  				//echo "Total Amount is = ".$amount;
-  				$html = '<!-- Main content -->
+	  		foreach ($store_data as $key => $value) {
+	  			echo "Printing ".$value['name']." data.";
+	  			echo "<br>";
+	  			$store_id = $value['id'];
+	  			$users_data = $this->model_users->getSubscribedUsersData($value['id']);
+	  			//echo json_encode($users_data);
+
+	  			foreach ($users_data as $k => $v) {
+	  				$month = date('m')-1;
+	  				$year = date('Y');
+	  				$orders_data = $this->model_orders->getUserDeliveriesData($value['id'],$v['id'],$month,$year);
+	  				echo "Printing ".$v['firstname']." data.";
+	  				echo "<br>";
+	  				//echo json_encode($orders_data);
+
+	  				$gross_amount = 0;
+	  				foreach ($orders_data as $a => $b) {
+	  					$gross_amount += $b['amount'];
+	  				}
+
+	  				$user_id = $v['id'];
+	  				$service_charge_value = $company_data['service_charge_value'];
+			  		$total_amount = $gross_amount + $company_data['service_charge_value'];
+	  				$create = $this->model_payments->create($store_id,$user_id,$gross_amount,$service_charge_value,$total_amount);
+
+	  				if($create == true) {
+	        			echo "User " .$v['firstname']. " Bill Generated.";
+	        			echo "<br>";
+	        		}
+	        		else {
+		        		echo "User " .$v['firstname']. " Bill Generation Failed.";
+		        		echo "<br>";
+		        	}
+	  			}
+	  		}		
+  		}
+	}
+
+	function pdf()
+	{
+		$html = '<!-- Main content -->
   				<!DOCTYPE html>
   				<html>
 				<head>
@@ -140,21 +159,8 @@ class Cron extends Admin_Controller
 				</body>
 				</html>';
 				echo $html;
-  				echo "<br>";
-  			}
-  		}
+    	
 	}
 
-	function pdf()
-	{
-	    $this->load->helper('pdf_helper');
-	    $data = "Print Data";
-    	$this->load->view('pdfreport', $data);
-    	/*
-    	$data = "Print Data";
-	    $this->$data['orders_data'] = $orders_data;
-  		$this->render_template('pdfreport', $this->$data);
-    	*/
-	}
 
 }

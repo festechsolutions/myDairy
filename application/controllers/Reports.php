@@ -10,6 +10,7 @@ class Reports extends Admin_Controller
 		$this->data['page_title'] = 'Reports';
 		$this->load->model('model_reports');
 		$this->load->model('model_stores');
+		$this->load->model('model_category');
 	}
 
 	/* 
@@ -144,7 +145,20 @@ class Reports extends Admin_Controller
 		$this->data['order_data'] = $order_data;
 		$this->data['company_currency'] = $this->company_currency();
 
-		$this->render_template('reports/todayitemwise', $this->data);
+		$this->render_template('reports/todaystoreitemwise', $this->data);
+	}
+
+	public function userdeliveries()
+	{
+		if(!in_array('viewReport', $this->permission)) {
+            redirect('dashboard', 'refresh');
+        }
+
+        $this->data['category'] = $this->model_category->getActiveCategory();
+        $this->data['stores'] = $this->model_stores->getActiveStore();
+        $this->data['company_currency'] = $this->company_currency();
+        $this->data['company_data'] = $this->model_company->getCompanyData(1);
+		$this->render_template('reports/userdeliveries', $this->data);
 	}
 
 	public function storewise()
