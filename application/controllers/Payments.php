@@ -174,6 +174,7 @@ class Payments extends Admin_Controller
 				<head>
 					<meta charset="utf-8">
 					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
 					<title>Payments</title>
 					<!-- Tell the browser to be responsive to screen width -->
 					<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -185,10 +186,109 @@ class Payments extends Admin_Controller
 					<link rel="stylesheet" href="'.base_url('assets/bower_components/Ionicons/css/ionicons.min.css').'">
 					<!-- Theme style -->
 					<link rel="stylesheet" href="'.base_url('assets/dist/css/AdminLTE.min.css').'">
+					<style>
+					body,
+					html {
+						margin: 0;
+						width: 100%;
+					}
+			
+					.mainDiv {
+						width: 100%;
+    					max-width: 400px;
+    					padding: 10px 10px;
+						padding-bottom: 3px;
+						margin:auto;
+					}
+			
+					.head1 {
+						width: 100%;
+						/* height: 150px; */
+					}
+					hr{
+						margin-top: 10px;
+    					margin-bottom: 10px;
+    					border: 0;
+    					border-top: 1px solid #d1d1d1;
+					}
+					.hss {
+						text-transform: uppercase;
+						text-align: center;
+						/* margin-bottom: 0px; */
+						margin: 0;
+						margin-top: 10px;
+						font-size: 20px;
+					}
+			
+					.hss2 {
+						text-transform: capitalize;
+						font-size: 18px;
+						/* font-weight: 500; */
+						margin-bottom: 10px;
+					}
+					.col-md-12{
+						padding: 0px;
+					}
+			
+					.s34hd {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						height: 30px;
+					}
+			
+					.s34hd p {
+						margin: 0;
+						min-width: 100px;
+						text-align: center;
+					}
+			
+					.bottom {
+						margin: 20px 0px;
+					}
+			
+					.bottom p {
+						text-align: center;
+						margin: 0px;
+						font-size: 12px;
+					}
+					.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+						padding: 8px 4px;
+					}
+				</style>
 				</head>
 				<body>
-						
-				  <div class="col-md-12 col-xs-12">
+				<div class="mainDiv">
+				<header class="head1">
+					<h2 class="hss">Invoice</h2>
+					<hr>
+				</header>
+		
+				<div class="cutomerInfo">
+					<h1 class="hss hss2">Customer Information</h1>
+					<div class="allInfos">
+						<span class="s34hd span1">
+							<p>User Name</p>
+							<p>mswakhil_bdp</p>
+						</span>
+						<span class="s34hd span2">
+							<p>Invoice No</p>
+							<p>411348</p>
+						</span>
+						<span class="s34hd span3">
+							<p>Billing Date</p>
+							<p>19/04/2021</p>
+						</span>
+						<span class="s34hd span4">
+							<p>Due Date</p>
+							<p>24/04/2021</p>
+						</span>
+					</div>
+				</div>
+		
+				<hr>
+		
+			
 		        	<br>
 
 		        	<div class="box">
@@ -249,7 +349,16 @@ class Payments extends Admin_Controller
 		        	</div>
 		        	<!-- /.box -->
 
-		          </div>
+		     
+				  <hr>
+
+				  <div class="bottom">
+					  <p>***This is computer generated invoice. No signature required***</p>
+					  <p> Thank you for your prompt payment.</p>
+				  </div>
+		  
+			  </div>
+			  
 				</body>
 				</html>';
 				echo $html;

@@ -92,7 +92,6 @@ class Cron extends Admin_Controller
 					<link rel="stylesheet" href="'.base_url('assets/dist/css/AdminLTE.min.css').'">
 				</head>
 				<body>
-						
 				  <div class="col-md-12 col-xs-12">
 		        	<br>
 
