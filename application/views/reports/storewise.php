@@ -29,9 +29,9 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="date">Shop</label>
+              <label for="date">Colony/Store</label>
               <select class="form-control" name="select_store" id="select_store">
-                <option value="">Select shop</option>
+                <option value="">Select Colony/Store</option>
                 <?php foreach ($store_data as $key => $value): ?>
                   <option value="<?php echo $value['id'] ?>" <?php if($selected_store == $value['id']) { echo 'selected="selected"'; } ?>><?php echo $value['name']; ?></option>
                 <?php endforeach ?>

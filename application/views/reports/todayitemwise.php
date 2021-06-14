@@ -73,6 +73,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $("#ReportMainNav").addClass('active');
+      $("#productReportSubMenu").addClass('active');
     });
   </script>
 

@@ -4,12 +4,11 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Manage
-      <small>Payments</small>
+      Reports
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Payments</li>
+      <li class="active">Reports</li>
     </ol>
   </section>
 
@@ -126,8 +125,8 @@
 
   $(document).ready(function () {
 
-    $("#PaymentsMainNav").addClass('active');
-    $("#createPaymentsSubMenu").addClass('active');
+    $("#ReportMainNav").addClass('active');
+    $("#deliveryReportSubMenu").addClass('active');
 
   });
 

@@ -43,10 +43,12 @@
             <table id="manageTable" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>Payment ID</th>
                 <th>Customer Name</th>
+                <th>Mobile No</th>
                 <th>Net Amount</th>
-                <th>Status</th>
+                <th>Colony/Store Name</th>
+                <th>Invoice No</th>
+                <th>Payment Status</th>
                 <?php if(in_array('updatePayments', $user_permission) || in_array('deletePayments', $user_permission)): ?>
                 <th>Action</th>
                 <?php endif; ?>
@@ -75,7 +77,14 @@ var base_url = "<?php echo base_url(); ?>";
 $(document).ready(function() {
 
   $("#PaymentsMainNav").addClass('active');
-  $("#managePaymentsSubMenu").addClass('active');
+  $("#managepaymentsSubMenu").addClass('active');
+
+  // initialize the datatable 
+  manageTable = $('#manageTable').DataTable({
+    'ajax': base_url + 'payments/fetchPaymentsData',
+    'order': [],
+    "scrollX": true
+  });
 
 });
 
