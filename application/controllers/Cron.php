@@ -92,10 +92,8 @@ class Cron extends Admin_Controller
 					<link rel="stylesheet" href="'.base_url('assets/dist/css/AdminLTE.min.css').'">
 				</head>
 				<body>
-						
 				  <div class="col-md-12 col-xs-12">
 		        	<br>
-
 		        	<div class="box">
 		          		<div class="box-header">
 		            		<h3 class="box-title">Products Delivered for the Selected Month</h3>
@@ -125,7 +123,6 @@ class Cron extends Admin_Controller
 						  			$exis_date = $v['date'];
 								}else{
 						  			$html .= '
-
 						  				<td>'.$v['date'].'</td>
 						  				<td>'.$v['product_name'].'</td>
 						  				<td>'.$v['qty'].'</td>
@@ -154,7 +151,6 @@ class Cron extends Admin_Controller
 		          		<!-- /.box-body -->
 		        	</div>
 		        	<!-- /.box -->
-
 		          </div>
 				</body>
 				</html>';
