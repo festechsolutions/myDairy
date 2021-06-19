@@ -22,12 +22,13 @@ class Cron extends Admin_Controller
 
 	public function index()
 	{
-        /*if(!$this->input->is_cli_request())
+                if(!$this->input->is_cli_request())
   		{
-      		echo "This script can only be accessed via the command line" . PHP_EOL;
-      		return;
-  		}else
-  		{*/
+      		    echo "This script can only be accessed via the command line" . PHP_EOL;
+      		    return;
+  		}
+		else
+  		{
 	  		$store_data = $this->model_stores->getStoresData();
 	  		$company_data = $this->model_company->getCompanyData(1);
 	  		//echo json_encode($store_data);
@@ -67,7 +68,7 @@ class Cron extends Admin_Controller
 		        	}
 	  			}
 	  		}		
-  		//}
+  		}
 	}
 
 	function pdf()
