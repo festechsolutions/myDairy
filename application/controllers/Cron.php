@@ -40,7 +40,7 @@ class Cron extends Admin_Controller
 	  			//echo json_encode($users_data);
 
 	  			foreach ($users_data as $k => $v) {
-	  				$month = date('m')-1;
+	  				$month = date('m');
 	  				$year = date('Y');
 	  				$orders_data = $this->model_orders->getUserDeliveriesData($value['id'],$v['id'],$month,$year);
 	  				echo "Printing ".$v['firstname']." data.";
