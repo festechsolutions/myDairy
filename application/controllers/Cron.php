@@ -67,7 +67,7 @@ class Cron extends Admin_Controller
 		        	}
 	  			}
 	  		}		
-  		}
+  		//}
 	}
 
 	function pdf()
