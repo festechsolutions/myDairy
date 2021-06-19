@@ -15,11 +15,10 @@ class Cron extends Admin_Controller
 		$this->load->model('model_payments');
 		$this->load->model('model_products');
 		$this->load->model('model_category');
-        $this->load->model('model_orders');
+                $this->load->model('model_orders');
 		$this->load->model('model_stores');
-        $this->load->model('model_company');
-        $this->load->model('model_cron');
-	}
+                $this->load->model('model_company');
+        }
 
 	public function index()
 	{
